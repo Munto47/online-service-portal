@@ -1,0 +1,6 @@
+com\mobile\portal\billing\web\InvoiceController.class
+com\mobile\portal\billing\repository\InvoiceRepository.class
+com\mobile\portal\billing\BillingServiceApplication.class
+com\mobile\portal\billing\domain\Invoice.class
+com\mobile\portal\billing\service\BillingService.class
+com\mobile\portal\billing\domain\InvoiceRequest.class

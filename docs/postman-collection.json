@@ -1,0 +1,63 @@
+{
+  "info": {
+    "_postman_id": "4e7f5cd6-c91a-4ad4-92a8-e5be929f5d23",
+    "name": "Online Service Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Account",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"张三\",\n  \"idNumber\": \"440101199001018888\",\n  \"phoneNumber\": \"13800001234\",\n  \"planType\": \"5G-premium\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/account-service/accounts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["account-service", "accounts"]
+        }
+      }
+    },
+    {
+      "name": "Query Billing",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/billing-service/invoices?phoneNumber=13800001234",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["billing-service", "invoices"],
+          "query": [{ "key": "phoneNumber", "value": "13800001234" }]
+        }
+      }
+    },
+    {
+      "name": "Submit Repair",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phoneNumber\": \"13800001234\",\n  \"deviceType\": \"手机\",\n  \"description\": \"无法拨号\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/support-service/repairs",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["support-service", "repairs"]
+        }
+      }
+    }
+  ]
+}

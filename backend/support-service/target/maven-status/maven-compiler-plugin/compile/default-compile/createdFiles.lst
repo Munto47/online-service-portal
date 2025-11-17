@@ -1,0 +1,9 @@
+com/mobile/portal/support/SupportServiceApplication.class
+com/mobile/portal/support/domain/TicketType.class
+com/mobile/portal/support/web/SupportController.class
+com/mobile/portal/support/domain/RepairRequest.class
+com/mobile/portal/support/repository/ServiceTicketRepository.class
+com/mobile/portal/support/domain/ComplaintRequest.class
+com/mobile/portal/support/service/SupportTicketService.class
+com/mobile/portal/support/client/AccountClient.class
+com/mobile/portal/support/domain/ServiceTicket.class

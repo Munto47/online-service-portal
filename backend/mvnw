@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+WRAPPER_DIR="$(cd "$(dirname "$0")" && pwd)"
+WRAPPER_JAR="$WRAPPER_DIR/.mvn/wrapper/maven-wrapper.jar"
+WRAPPER_PROPERTIES="$WRAPPER_DIR/.mvn/wrapper/maven-wrapper.properties"
+JAVA_CMD="${JAVA_HOME:+$JAVA_HOME/bin/}java"
+
+if [ ! -f "$WRAPPER_JAR" ]; then
+  echo "Wrapper jar missing. Please check version control." >&2
+  exit 1
+fi
+
+exec "$JAVA_CMD" -Dmaven.multiModuleProjectDirectory="$WRAPPER_DIR" \
+  -cp "$WRAPPER_JAR" org.apache.maven.wrapper.MavenWrapperMain "$@"
