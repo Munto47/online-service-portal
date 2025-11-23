@@ -67,6 +67,11 @@ JAVA_HOME=$HOME/.jdks/jdk-17.0.13+11 ./mvnw -pl support-service spring-boot:run
 JAVA_HOME=$HOME/.jdks/jdk-17.0.13+11 ./mvnw -pl gateway-service spring-boot:run
 ```
 
+> **Windows 提示**：若 `spring-boot:run` 在命令行输出 `ClassNotFoundException: com.mobile.portal.account.AccountServiceApplication`，通常是因为 Spring Boot 插件在含有多字节路径（例如“软件建模”）的机器上 fork 新 JVM 时类路径被截断。可以使用下面任一方式绕过：  
+> 1. 先运行 `mvnw -pl account-service clean package`，然后 `java -jar account-service/target/account-service-1.0.0-SNAPSHOT.jar`（其他模块同理）。  
+> 2. 或使用 `mvnw -pl account-service spring-boot:run -Dspring-boot.run.fork=false`，让 Spring Boot 在当前 JVM 内执行。  
+> 如果需要指定入口类，可再加 `-Dspring-boot.run.main-class=com.mobile.portal.account.AccountServiceApplication`。
+
 服务默认端口：
 
 | 服务 | 端口 | 主要职责 |
@@ -102,6 +107,9 @@ JAVA_HOME=$HOME/.jdks/jdk-17.0.13+11 ./mvnw clean package -DskipTests
 
 # 某个服务的快速编译
 JAVA_HOME=$HOME/.jdks/jdk-17.0.13+11 ./mvnw -pl support-service -am test -DskipTests
+
+# Windows 无法 fork 的情况下在当前 JVM 中运行
+mvnw -pl account-service spring-boot:run -Dspring-boot.run.fork=false
 ```
 
 ### 进一步扩展
